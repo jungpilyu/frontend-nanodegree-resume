@@ -191,3 +191,5 @@ bio.display();
 education.display();
 work.display();
 projects.display();
+$('#mapDiv:last').append(googleMap);
+//$('#mapDiv:last').append(internationalizeButton);
