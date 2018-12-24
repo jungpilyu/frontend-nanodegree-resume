@@ -17,26 +17,32 @@ const bio = {
   biopic: 'images/fry.jpg',
   display: () => {
     const role = HTMLheaderRole.replace('%data%', bio.role);
-    $('#header').prepend(role);
+    $('#header:first').prepend(role);
     const name = HTMLheaderName.replace('%data%', bio.name);
-    $('#header').prepend(name);
+    $('#header:first').prepend(name);
 
     const mobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
     $('#topContacts:last').append(mobile);
+    $('#footerContacts:last').append(mobile);
     const email = HTMLemail.replace('%data%', bio.contacts.email);
     $('#topContacts:last').append(email);
+    $('#footerContacts:last').append(email);
     const github = HTMLgithub.replace('%data%', bio.contacts.github);
     $('#topContacts:last').append(github);
+    $('#footerContacts:last').append(github);
     const twitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
     $('#topContacts:last').append(twitter);
+    $('#footerContacts:last').append(twitter);
     const location = HTMLlocation.replace('%data%', bio.contacts.location);
     $('#topContacts:last').append(location);
+    $('#footerContacts:last').append(location);
+
     const biopic = HTMLbioPic.replace('%data%', bio.biopic);
-    $('#topContacts:last').append(biopic);
-    
+    $('#header:last').append(biopic);
+
     const welcome = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
-    $('#topContacts:last').append(welcome);
-    $("#topContacts:last").append(HTMLskillsStart);
+    $('#header:last').append(welcome);
+    $("#header:last").append(HTMLskillsStart);
     bio.skills.forEach((skill) => {
       const aSkill = HTMLskills.replace('%data%', skill);
       $("#skills:last").append(aSkill);
@@ -91,24 +97,22 @@ const education = {
     $('#education').append(HTMLschoolStart);
     education.schools.forEach((school) => {
       const name = HTMLschoolName.replace('%data%', school.name);
-      $(".education-entry:last").append(name);
-      const location = HTMLschoolLocation.replace('%data%', school.location);
-      $(".education-entry:last").append(location);
       const degree = HTMLschoolDegree.replace('%data%', school.degree);
-      $(".education-entry:last").append(degree);
-      const majors = HTMLschoolMajor.replace('%data%', school.majors);
-      $(".education-entry:last").append(majors);
+      $(".education-entry:last").append(name + degree);
       const dates = HTMLschoolDates.replace('%data%', school.dates);
       $(".education-entry:last").append(dates);
+      const location = HTMLschoolLocation.replace('%data%', school.location);
+      $(".education-entry:last").append(location);
+      const majors = HTMLschoolMajor.replace('%data%', school.majors);
+      $(".education-entry:last").append(majors);
       const url = HTMLonlineURL.replace('%data%', school.url);
       $(".education-entry:last").append(url);
     });
     $(".education-entry:last").append(HTMLonlineClasses);
     education.onlineCourses.forEach((online) => {
       const title = HTMLonlineTitle.replace('%data%', online.title);
-      $(".education-entry:last").append(title);
       const school = HTMLonlineSchool.replace('%data%', online.school);
-      $(".education-entry:last").append(school);
+      $(".education-entry:last").append(title + school);
       const dates = HTMLonlineDates.replace('%data%', online.dates);
       $(".education-entry:last").append(dates);
       const url = HTMLonlineURL.replace('%data%', online.url);
@@ -141,9 +145,8 @@ const work = {
     $('#workExperience').append(HTMLworkStart);
     work.jobs.forEach((job) => {
       const employer = HTMLworkEmployer.replace('%data%', job.employer);
-      $(".work-entry:last").append(employer);
       const title = HTMLworkTitle.replace('%data%', job.title);
-      $(".work-entry:last").append(title);
+      $(".work-entry:last").append(employer + title);
       const location = HTMLworkLocation.replace('%data%', job.location);
       $(".work-entry:last").append(location);
       const dates = HTMLworkDates.replace('%data%', job.dates);
